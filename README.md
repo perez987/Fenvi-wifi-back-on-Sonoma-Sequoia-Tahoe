@@ -1,4 +1,4 @@
-## Get back Fenvi T919 and other Broadcom Wi-Fi on macOS 14 Sonoma thanks to OLCP
+## Get back Fenvi T919 and other Broadcom Wi-Fi on macOS 14 Sonoma, Sequoia and Tahoe
 
 <p align="center">
 <img src="Images/Wi-Fi icon.png">
