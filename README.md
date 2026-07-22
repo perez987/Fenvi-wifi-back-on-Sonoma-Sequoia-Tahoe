@@ -4,7 +4,17 @@
 <img src="img/Wi-Fi icon.png">
 </p>
 
-#### _September 2025: macOS 26 Tahoe breaks OCLP root patch_
+#### June 2026: new app to recover Fenvi and other Broadcom Wi-Fi on macOS Tahoe
+
+*Mirone* has developed [WifiPatcherPro](https://github.com/Mirone/WiFiPatcherPro/) to make Fenvi and (not all) Broadcom Wi-Fi work again on macOS Tahoe (Sonoma and Sequoia are also supported). The app is much smaller in size than OCLP. Its operation is simple and the process is well automated.
+
+Go to the WifiPatcherPro repository and read the instructions. I have tried it and it seems to work well.
+
+|     |
+|:---:|
+| ![WifiPatcherPro](Images/Wifi-patcher-pro.png) |
+
+#### September 2025: macOS 26 Tahoe breaks OCLP root patch
 
 OLCP root patch for Fenvi Wi-Fi adapters has stopped working on macOS Tahoe. There is no fix yet. Wi-Fi adapters that lost support on macOS Sonoma and Sequoia and were able to remain active thanks to OCLP don't work on Tahoe. I'm pretty sure the OCLP team is working on it, but they haven't released a version for Tahoe yet.
 
@@ -12,12 +22,12 @@ Intel Wi-Fi adapters can be used, thanks to itlwm.kext and Heliport app. Airport
 
 Don't forget that the Fenvi's Bluetooth chip is still supported by macOS Tahoe, so you can use Fenvi Bluetooth and Intel Wi-Fi at the same time with excellent results. However, Airdrop and other features are lost with Intel Wi-Fi.
 
-#### _July 2024: macOS 15 Sequoia breaks OCLP root patch_
+#### July 2024: macOS 15 Sequoia breaks OCLP root patch
 
 OCLP root patch stopped working on macOS Sequoia. OCLP team has a fix that allows you to recover Fenvi Wi-Fi on macOS Sequoia.
 You can read about this in the repo [macOS 15 Sequoia on Z390 using OpenCore](https://github.com/perez987/macOS-15-Sequoia-on-z390-with-OpenCore) >> Fenvi and Broadcom Wi-Fi.
 
-#### _March 2024: macOS 14.4 Sonoma breaks OCLP root patch_
+#### March 2024: macOS 14.4 Sonoma breaks OCLP root patch
 
 In macOS 14.4, Apple has modified parts of the Wi-Fi stack and OCLP root patch has stopped working so the Fenvi and Broadcom Wi-Fi are no longer operational.
 
