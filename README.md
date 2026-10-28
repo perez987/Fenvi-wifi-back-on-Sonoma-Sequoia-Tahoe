@@ -16,7 +16,7 @@ Instructions:
 - Ensure that your audio `layout-id` is defined in only one place: either in your boot arguments (`NVRAM → 7C436110-AB2A-4BBB-A880-FE41995C9F82 → boot-args`) as `alcid=xx`, or under DeviceProperties (e.g., `PciRoot(0x0)/Pci(0x1F,0x3)` → `layout-id` | Data | `xxxxxxxx`).
 - Restart your system.
 
-Go to the source repo and read the README (there is an English version.)
+Go to the source repo and read the README (there is an English version).
 
 I’ve tested it, and it works very well. As for the language in which the sound sources are displayed, it defaults to Chinese unless you add the boot argument `shda-lang=en`, in which case they appear in English. You can also configure other languages—for example, `shda-lang=es`, and so on.
 
