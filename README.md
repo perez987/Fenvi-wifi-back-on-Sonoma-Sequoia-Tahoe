@@ -4,7 +4,23 @@
 <img src="Images/Wi-Fi icon.png">
 </p>
 
-#### June 2026: new app to recover Fenvi and other Broadcom Wi-Fi on macOS Tahoe
+## October 2026: new way to recover Fenvi and other Broadcom Wi-Fi only on macOS Tahoe
+
+There is a new method to restore Wi-Fi functionality for Fenvi (and other modern Broadcom) cards on Tahoe: [SimpleHDA.kext](https://github.com/laobamac/SimpleBCM/), developed by *laobamac*. This is a kext used with OpenCore, which is injected at startup just like other kexts.
+Instructions:
+
+- Open your EFI partition.
+- Add SimpleHDA.kext to the Kexts folder (AppleALC.kext must also be present).
+- In your config.plist, enable AppleALC.kext and add SimpleHDA (AppleALC should come before SimpleHDA; both must follow Lilu, which should always be first).
+- In your boot arguments (`NVRAM → 7C436110-AB2A-4BBB-A880-FE41995C9F82 → boot-args`), add `keepsyms=1 shda-lang=en`.
+- Ensure that your audio `layout-id` is defined in only one place: either in your boot arguments (`NVRAM → 7C436110-AB2A-4BBB-A880-FE41995C9F82 → boot-args`) as `alcid=xx`, or under DeviceProperties (e.g., `PciRoot(0x0)/Pci(0x1F,0x3)` → `layout-id` | Data | `xxxxxxxx`).
+- Restart your system.
+
+Go to the source repo and read the README (there is an English version.)
+
+I’ve tested it, and it works very well. As for the language in which the sound sources are displayed, it defaults to Chinese unless you add the boot argument `shda-lang=en`, in which case they appear in English. You can also configure other languages—for example, `shda-lang=es`, and so on.
+
+## June 2026: new app to recover Fenvi and other Broadcom Wi-Fi on macOS Tahoe and older
 
 *Mirone* has developed [WifiPatcherPro](https://github.com/Mirone/WiFiPatcherPro/) to make Fenvi and (not all) Broadcom Wi-Fi work again on macOS Tahoe (Sonoma and Sequoia are also supported). The app is much smaller in size than OCLP. Its operation is simple and the process is well automated.
 
@@ -14,7 +30,7 @@ Go to the WifiPatcherPro repository and read the instructions. I have tried it a
 |:---:|
 | ![WifiPatcherPro](Images/Wifi-patcher-pro.png) |
 
-#### September 2025: macOS 26 Tahoe breaks OCLP root patch
+## September 2025: macOS 26 Tahoe breaks OCLP root patch
 
 OLCP root patch for Fenvi Wi-Fi adapters has stopped working on macOS Tahoe. There is no fix yet. Wi-Fi adapters that lost support on macOS Sonoma and Sequoia and were able to remain active thanks to OCLP don't work on Tahoe. I'm pretty sure the OCLP team is working on it, but they haven't released a version for Tahoe yet.
 
@@ -22,12 +38,12 @@ Intel Wi-Fi adapters can be used, thanks to itlwm.kext and Heliport app. Airport
 
 Don't forget that the Fenvi's Bluetooth chip is still supported by macOS Tahoe, so you can use Fenvi Bluetooth and Intel Wi-Fi at the same time with excellent results. However, Airdrop and other features are lost with Intel Wi-Fi.
 
-#### July 2024: macOS 15 Sequoia breaks OCLP root patch
+## July 2024: macOS 15 Sequoia breaks OCLP root patch
 
 OCLP root patch stopped working on macOS Sequoia. OCLP team has a fix that allows you to recover Fenvi Wi-Fi on macOS Sequoia.
 You can read about this in the repo [macOS 15 Sequoia on Z390 using OpenCore](https://github.com/perez987/macOS-15-Sequoia-on-z390-with-OpenCore) >> Fenvi and Broadcom Wi-Fi.
 
-#### March 2024: macOS 14.4 Sonoma breaks OCLP root patch
+## March 2024: macOS 14.4 Sonoma breaks OCLP root patch
 
 In macOS 14.4, Apple has modified parts of the Wi-Fi stack and OCLP root patch has stopped working so the Fenvi and Broadcom Wi-Fi are no longer operational.
 
@@ -43,9 +59,7 @@ How to make the change?
    
 Other settings do not change.
 
----
-
-### Broadcom Wi-Fi stops working in Sonoma
+## Broadcom Wi-Fi stops working in Sonoma
 
 Apple has dropped support for Broadcom Wi-Fi chipset used in pre-2017 Macs:
 
@@ -72,7 +86,7 @@ As extra information, Macs that can officially update to Sonoma have these Broad
 
 They are chipsets soldered on the board that are not sold on the market and we cannot got them to install a Wi-Fi compatible with Sonoma in our Hack.
 
-### Get back Fenvi Wi-Fi in Sonoma
+## Get back Fenvi Wi-Fi in Sonoma
 
 OCLP developers have been working on this issue and have released a fix in OCLP 0.6.9 that makes Wi-Fi work again like it did in Ventura. I know it is not the ideal situation, many of us want to have the system as close as possible to a real Mac and OCLP has to apply root patches that force it to work by relaxing some macOS security rules. But what the OCLP team has achieved is a very big advance.
 
@@ -91,10 +105,10 @@ In summary, this is what to do:
 * Inject 3 extensions (Kexts folder and config.plist): IOSkywalk.kext, IO80211FamilyLegacy.kext and AirPortBrcmNIC.kext (IO80211FamilyLegacy.kext plugin) in this order, setting MinKernel to 23.0.0 to ensure they are injected only in Sonoma
 * Reboot and apply OCLP root patch (Modern Wireless Network).
 
-My Wi-Fi is Fenvi T919 so I have tried this pre-release version of OCLP 0.6.9. I have followed the instructions TO THE LETTER and they have worked well. I have Wi-Fi and Airdrop in Sonoma. Please note that _khronokernel_ instructions must be followed EXACTLY. In short, this version of OCLP 0.6.9 beta works, at least for me.
+My Wi-Fi is Fenvi T919 so I have tried this pre-release version of OCLP. I have followed the instructions TO THE LETTER and they have worked well. I have Wi-Fi and Airdrop in Sonoma. Please note that _khronokernel_ instructions must be followed EXACTLY. In short, this version of OCLP 0.6.9 beta works, at least for me.
 <br>
 <p align="center">
-<img width="640" src="img/Wifi active again.png">
+<img width="640" src="Images/Wifi active again.png">
 </p>
 <br>
 
@@ -111,9 +125,7 @@ Note: OCLP has added basic support for 3rd party Broadcom chipsets, not official
 * device-id pci12e4,43B1 >> BCM4352
 * device-id pci12e4,43B2 >> BCM4352 (2.4 GHz).
 
----
-
-### AMFI and AMFIpass.kext
+## AMFI and AMFIpass.kext
 
 AMFI (Apple Mobile File Integrity) was originally seen on iOS but migrated to macOS in 10.12 Sierra, possibly in 2012 when GateKeeper and digitally signed code were introduced. In short, it is a technology that blocks the execution of non signed code. It consists of 2 components:
 
@@ -122,18 +134,18 @@ AMFI (Apple Mobile File Integrity) was originally seen on iOS but migrated to ma
 
 AMFI must be enabled to grant third-party applications access to privacy-relevant services and/or peripherals, such as external cameras and microphones. But, with SIP and/or AMFI disabled (a necessary condition to apply OCLP root patches) the dialog box to grant access to those applications is not shown to the user so those peripherals simply cannot be used in applications like Zoom or MS Teams, for example.
 
-AMFI is usually enabled but it has already been seen that OCLP root patches require disabling AMFI and SIP in order to be applied. To avoid the problem of peripherals not working with third-party applications, the OCLP team has developed the **AMFIPass.kext** extension (1.3.0 release) that allows AMFI to be enabled when the system must operate with AMFI and SIP disabled, such as when using OCLP or applying root patches. This fixes the permissions issue and OCLP can apply the patches as if AMFI were disabled.
+AMFI is usually enabled but it has already been seen that OCLP root patches require disabling AMFI and SIP in order to be applied. To avoid the problem of peripherals not working with third-party applications, the OCLP team has developed the **AMFIPass.kext** extension that allows AMFI to be enabled when the system must operate with AMFI and SIP disabled, such as when using OCLP or applying root patches. This fixes the permissions issue and OCLP can apply the patches as if AMFI were disabled.
 
 If macOS has previously given permissions to these third-party applications and then AMFI and/or SIP is disabled, these permissions are transferred and the new system maintains them. But in a clean installation they do not exist. This is the main problem that AMFIPass.kext tries to solve. Being able to root patch OCLP with AMFI enabled is just a positive side effect.
 
 In summary, when applying OCLP root patches you can act in 2 different ways:
 
 * with boot argument `amfi=0x80` without AMFIPass.kext. `amfi=0x80` is a bitmask that disables AMFI completely. The value 0x80 is equivalent to `AMFI_ALLOW_EVERYTHING`
-* with AMFIPass.kext 1.3.0 removing `amfi=0x80` and adding `-amfipassbeta` in boot args.
+* with AMFIPass.kext removing `amfi=0x80` and adding `-amfipassbeta` in boot args.
 
 The `-amfipassbeta` boot argument is provided by AMFIPass.kext to override kernel version checking, so that the extension is loaded regardless of the macOS version. This way AMFIPass can work on macOS beta for which the extension does not yet have support.
 
-Note: current AMFIPass.kext 1.4.0 doesn't need anymore `amfi=0x80` boot arg on Sonoma.
+Note: current AMFIPass.kext is the version 1.4.1.
 
 I use AMFIPass.kext, removing `amfi=0x80`. If OCLP root patching fails due to this setting, you can temporarily disable AMFI with the boot argument `amfi=0x80`, apply the patches, reboot, remove `amfi=0x80`, and reboot again.
 
