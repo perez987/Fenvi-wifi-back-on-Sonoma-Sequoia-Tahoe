@@ -59,7 +59,9 @@ How to make the change?
    
 Other settings do not change.
 
-## Broadcom Wi-Fi stops working in Sonoma
+<p align="center">✹ ✹ ✹</p>
+
+# Broadcom Wi-Fi stops working in Sonoma
 
 Apple has dropped support for Broadcom Wi-Fi chipset used in pre-2017 Macs:
 
