@@ -4,7 +4,27 @@
 <img src="Images/Wi-Fi icon.png">
 </p>
 
-## June 2026: new app to recover Fenvi and other Broadcom Wi-Fi on macOS Tahoe and older
+## 🆕 October 2026: new method to recover the Fenvi and other Broadcom Wi-Fi only on macOS Tahoe
+
+User *laobamac* has published [SimpleBCM.kext](https://github.com/laobamac/SimpleBCM/blob/main/README.en.md), Lilu plugin that adapts Broadcom Wi-Fi to Tahoe. The driver loads separately through OpenCore. It does not modify the system volume or replace system frameworks.
+
+Please read carefully the README (there is English version).
+
+### Installation 
+
+There is no compiled kexts to download yet. So, you have to compile it yourself. Requires full Xcode, Git, and Python 3. The validated toolchain is Xcode 26.5 / 17F42. Get the repo, go to that folder and run:
+
+```bash
+python3 Tools/build.py --configuration Release
+python3 Tools/build.py --configuration Release --analyze
+python3 Tools/package.py
+```
+
+The output is `dist/SimpleBCM-1.0.0-Tahoe-x86_64.zip`.  The current build still requires a reboot. You get `SimpleBCM.kext` and `config.fragment.plist`, default configuration example  (load in this order: Lilu → SimpleBCM → IOSkywalkFamily → IO80211FamilyLegacy → AirPortBrcmNIC-Tahoe), plus `Extra` folder with Documentation.
+
+I've tested it in a Fenvi T919 system and it has worked fine. Before the test, revert any other method or root patch previously applied to have Broadcom wifi on Tahoe, reboot and test SimpleBCM.
+
+## 🆕 June 2026: new app to recover the Fenvi and other Broadcom Wi-Fi on macOS Tahoe and older
 
 *Mirone* has developed [WifiPatcherPro](https://github.com/Mirone/WiFiPatcherPro/) to make Fenvi and (not all) Broadcom Wi-Fi work again on macOS Tahoe (Sonoma and Sequoia are also supported). The app is much smaller in size than OCLP. Its operation is simple and the process is well automated.
 
