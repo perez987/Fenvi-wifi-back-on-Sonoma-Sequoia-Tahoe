@@ -6,7 +6,7 @@
 
 ## 🆕 October 2026: new method to recover the Fenvi and other Broadcom Wi-Fi
 
-User *laobamac* has published [SimpleBCM.kext](https://github.com/laobamac/SimpleBCM/blob/main/README.en.md), Lilu plugin that adapts Broadcom Wi-Fi to Tahoe, Sequoia and Sonoma. The driver loads separately through OpenCore. It does not modify the system volume or replace system frameworks.
+User *laobamac* has published [SimpleBCM.kext](https://github.com/laobamac/SimpleBCM), Lilu plugin that adapts Broadcom Wi-Fi to Tahoe, Sequoia and Sonoma. The driver loads separately through OpenCore. It does not modify the system volume or replace system frameworks.
 
 Please read carefully the README (there is English version).
 
