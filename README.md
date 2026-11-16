@@ -24,6 +24,18 @@ The output is a package with `SimpleBCM.kext` and `config.fragment.plist`, defau
 
 Before the test, revert any other method or root patch previously applied to have Broadcom wifi on Tahoe, reboot and test SimpleBCM.
 
+### SimpleBCM test
+
+My own hardware is Fenvi T919 (BCM94360CD). SimpleBCM works very well for the Wi-Fi connection, with the recomanded installation. However, when it comes to Airdrop, there are some Tahoe-specific details worth noting:
+
+- Wi-Fí connections speed is good when Airdrop is set to `No One` or `Contacts Only`, but but it drops appreciably when set to `Everyone`
+- AirDrop works best if the router's 5 GHz Wi-Fi channel is set to 44 (Europe) or 149 (USA)
+- The cause of this negative interaction between Airdrop and SimpleBCM remains unclear
+- Developer *laobamac* has a version 1.2.1-alpha in the releases page, to mitigate the issue with Tahoe; specifically, it adds a hook to activate the correct channel when using Airdrop
+- This issue is not seen on pre-Tahoe macOS.
+
+I am currently using `SimpleBCM 1.2.1-alpha`, with Wi-Fi 5 channel 44, with Airdrop set to `Contacts Only`, and I am completely satisfied—both in terms of Wi-Fi connection speed and the use of AirDrop.
+
 ## 🆕 June 2026: new app to recover the Fenvi and other Broadcom Wi-Fi on macOS Tahoe and older
 
 *Mirone* has developed [WifiPatcherPro](https://github.com/Mirone/WiFiPatcherPro/) to make Fenvi and (not all) Broadcom Wi-Fi work again on macOS Tahoe (Sonoma and Sequoia are also supported). The app is much smaller in size than OCLP. Its operation is simple and the process is well automated.
