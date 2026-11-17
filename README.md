@@ -28,7 +28,7 @@ Before the test, revert any other method or root patch previously applied to hav
 
 My own hardware is Fenvi T919 (BCM94360CD). SimpleBCM works very well for the Wi-Fi connection, with the recomanded installation. However, when it comes to Airdrop, there are some Tahoe-specific details worth noting:
 
-- Wi-Fí connections speed is good when Airdrop is set to `No One` or `Contacts Only`, but but it drops appreciably when set to `Everyone`
+- Wi-Fí connections speed is good when Airdrop is set to `No One` or `Contacts Only`, but it drops appreciably when set to `Everyone`
 - AirDrop works best if the router's 5 GHz Wi-Fi channel is set to 44 (Europe) or 149 (USA)
 - The cause of this negative interaction between Airdrop and SimpleBCM remains unclear
 - Developer *laobamac* has a version 1.2.1-alpha in the releases page, to mitigate the issue with Tahoe; specifically, it adds a hook to activate the correct channel when using Airdrop
