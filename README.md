@@ -36,7 +36,7 @@ My own hardware is Fenvi T919 (BCM94360CD). SimpleBCM works very well for the Wi
 
 I am currently using `SimpleBCM 1.2.1-alpha`, with Wi-Fi 5 channel 44, with Airdrop set to `Contacts Only`, and I am completely satisfied—both in terms of Wi-Fi connection speed and the use of AirDrop.
 
-## 🆕 June 2026: new app to recover the Fenvi and other Broadcom Wi-Fi on macOS Tahoe and older
+## June 2026: new app to recover the Fenvi and other Broadcom Wi-Fi on macOS Tahoe and older
 
 *Mirone* has developed [WifiPatcherPro](https://github.com/Mirone/WiFiPatcherPro/) to make Fenvi and (not all) Broadcom Wi-Fi work again on macOS Tahoe (Sonoma and Sequoia are also supported). The app is much smaller in size than OCLP. Its operation is simple and the process is well automated.
 
