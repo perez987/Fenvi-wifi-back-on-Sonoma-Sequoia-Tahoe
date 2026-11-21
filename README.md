@@ -12,7 +12,7 @@ Please read carefully the README (there is English version).
 
 ### Installation 
 
-There are alpha compiled kexts to download. Iptionally, you can compile it yourself. Requires full Xcode, Git, and Python 3. The validated toolchain is Xcode 26.5 / 17F42. Get the repo, go to that folder and run:
+There are alpha compiled kexts to download. Optionally, you can compile it yourself. Requires full Xcode, Git, and Python 3. The validated toolchain is Xcode 26.5 / 17F42. Get the repo, go to that folder and run:
 
 ```bash
 python3 Tools/build.py --configuration Release
